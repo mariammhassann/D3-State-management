@@ -1,7 +1,8 @@
-import { useTheme } from "../context/ThemeContext";
-import UserCard from "./UserCard";
+import { useTheme } from "../context/ThemeContext.jsx";
+import UserCard from "./UserCard.jsx";
 import abanobImg from "../assets/images/abanob.webp";
-import omarImg from "../assets/images/omar.avif";
+import omarImg from "../assets/images/Omar.avif";
+import "./Dashboard.css"; // عشان نكتب CSS للـ widgets
 
 function Dashboard() {
   const { theme } = useTheme();
@@ -18,53 +19,26 @@ function Dashboard() {
     { name: "Mohammed", role: "Delivery Manager" },
   ];
 
+  const colors = ["bg-blue", "bg-purple", "bg-green", "bg-orange", "bg-pink"];
+
   return (
-    <div className="app">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <h2>My Dashboard</h2>
-        <ul>
-          <li>🏠 Home</li>
-          <li>👤 Users</li>
-          <li>⚙️ Settings</li>
-        </ul>
-      </aside>
+    <div className={`dashboard ${theme}`}>
 
-      {/* Main Content */}
-      <main className="main-content">
-        <header className="topbar">
-          <h1>Welcome, Mariam 👋</h1>
-        </header>
-
-        {/* Stats Section */}
-        <section className="cards">
-          <div className="card">
-            <div className="card-icon">👥</div>
-            <h3>Total Users</h3>
-            <p className="card-value">1,250</p>
-          </div>
-          <div className="card">
-            <div className="card-icon">📦</div>
-            <h3>Projects</h3>
-            <p className="card-value">15</p>
-          </div>
-          <div className="card">
-            <div className="card-icon">📈</div>
-            <h3>Growth</h3>
-            <p className="card-value">+12%</p>
-          </div>
-        </section>
-
-        {/* Team Section */}
-        <h2 className="section-title">Our Team</h2>
-        <div className={`dashboard ${theme}`}>
-          <div className="cards-grid">
-            {team.map((member, i) => (
-              <UserCard key={i} {...member} />
-            ))}
-          </div>
+      {/* 🔹 Statistics Widgets */}
+      <div className="widgets-grid">
+        <div className="widget widget-color">
+          <h3>Total Members</h3>
+          <p>{team.length}</p>
         </div>
-      </main>
+    
+      </div>
+
+      {/* 🔹 Team Cards */}
+      <div className="cards-grid">
+        {team.map((member, i) => (
+          <UserCard key={i} {...member} cardColor={colors[i % colors.length]} />
+        ))}
+      </div>
     </div>
   );
 }
