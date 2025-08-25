@@ -1,0 +1,40 @@
+/* Widgets Container */
+.widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Widget Card */
+.widget {
+  padding: 20px;
+  border-radius: 14px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.widget:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.widget h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.widget p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Different Widget Colors */
+.widget-color   { background: linear-gradient(135deg, #49576d, #878991); }
